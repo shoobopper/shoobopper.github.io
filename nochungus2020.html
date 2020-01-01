@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<title>The Chungus Challenge</title>
+
+<head></head>
+
+<body>
+    <center>
+        <div class="title">No Chungus 2020</div>
+        <div class="countup" id="chunguscount">
+            <span class="timeel days">00</span>
+            <span class="timeel timeRefDays">days</span>
+            <span class="timeel hours">00</span>
+            <span class="timeel timeRefHours">hours</span>
+            <span class="timeel minutes">00</span>
+            <span class="timeel timeRefMinutes">minutes</span>
+            <span class="timeel seconds">00</span>
+            <span class="timeel timeRefSeconds">seconds</span>
+        </div>
+
+        <table>
+        <tr><th>Adam</th><th>Not Failed</th></tr>
+        <tr><th>Andy</th><th>Not Failed</th></tr>
+        <tr><th>Epicblaster</th><th>Not Failed</th></tr>
+        <tr><th>Ethan</th><th>Not Failed</th></tr>
+        <tr><th>IanLegs</th><th>Not Failed</th></tr>
+        <tr><th>Jaden</th><th>Not Failed</th></tr>
+        <tr><th>Joey</th><th>Not Failed</th></tr>
+        <tr><th>Kekebruh</th><th>Not Failed</th></tr>
+        <tr><th>Mikefood</th><th>Not Failed</th></tr>
+        <tr><th>NessMaine</th><th>Not Failed</th></tr>
+        <tr><th>Pickle</th><th>Not Failed</th></tr>
+        <tr><th>Pie39TheAwesome</th><th>Not Failed</th></tr>
+        <tr><th>Roller</th><th>Not Failed</th></tr>
+        <tr><th>Shoobopper</th><th>Not Failed</th></tr>
+        <tr><th>Slyder</th><th>Not Failed</th></tr>
+        <tr><th>SuperLenPants</th><th>Not Failed</th></tr>
+        <tr><th>Werlf</th><th>Not Failed</th></tr>
+        <tr><th>Will J</th><th>Not Failed</th></tr>
+    </table>
+        
+    <img src="images/chungus.png" alt="big chungus" class="inline" style="width:300px;height:300px;" />
+    
+    </center>
+    </body>
+    
+    <style>
+        body {
+            background-color: #fbfbfb;
+        }
+
+        .countup {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 3vw;
+            padding: 20px;
+            padding-bottom:30px;
+
+        }
+
+        .title {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 8vw;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            padding-top: 15px;
+            /*border: 1px solid black;*/
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5vw;
+            text-align: center;
+            border-collapse: collapse;
+            width: 50%
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            countUpFromTime("Jan 1, 2020 00:00:00", 'chunguscount');
+        };
+
+        function countUpFromTime(countFrom, id) {
+            countFrom = new Date(countFrom).getTime();
+            var now = new Date(),
+                countFrom = new Date(countFrom),
+                timeDifference = (now - countFrom);
+
+            var secondsInADay = 60 * 60 * 1000 * 24,
+                secondsInAHour = 60 * 60 * 1000;
+
+            days = Math.floor(timeDifference / (secondsInADay) * 1);
+            hours = Math.floor((timeDifference % (secondsInADay)) / (secondsInAHour) * 1);
+            mins = Math.floor(((timeDifference % (secondsInADay)) % (secondsInAHour)) / (60 * 1000) * 1);
+            secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
+
+            var idEl = document.getElementById(id);
+            idEl.getElementsByClassName('days')[0].innerHTML = days;
+            idEl.getElementsByClassName('hours')[0].innerHTML = hours;
+            idEl.getElementsByClassName('minutes')[0].innerHTML = mins;
+            idEl.getElementsByClassName('seconds')[0].innerHTML = secs;
+
+            clearTimeout(countUpFromTime.interval);
+            countUpFromTime.interval = setTimeout(function() {
+                countUpFromTime(countFrom, id);
+            }, 1000);
+        }
+    </script>
